@@ -29,12 +29,16 @@ int to_vvid (koord pm[], int n){
 
 
 double to_Sort (koord pm[], int n, koord b){
-	int a;
-	for (a=0; a<n-1; a++){
-		if(pm[a].result>pm[a+1].result){
-			b=pm[a];
-			pm[a]=pm[a+1];
-			pm[a+1]=b;
+	int a, k;
+	for (k=0; k<n-1; k++){
+		for (a=0; a<n-1; a++){
+			if(pm[a].result>pm[a+1].result){
+				b=pm[a];
+				pm[a]=pm[a+1];
+				pm[a+1]=b;
+			}else{
+				continue;
+			}
 		}
 	}
 }
@@ -60,9 +64,9 @@ double to_Min (koord pm[], int n){
 	int a;
 	double min;
 	if(pm[0].result>pm[1].result){
-		min=pm[0].result;
-	}else{
 		min=pm[1].result;
+	}else{
+		min=pm[0].result;
 	}
 	for (a=2; a<n; a++){
 		if(min>pm[a].result){
